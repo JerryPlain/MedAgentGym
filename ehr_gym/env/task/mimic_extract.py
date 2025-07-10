@@ -15,7 +15,7 @@ Use CUDA and PyTorch for faster training if needed.
 
 Code requirements:
     - Read all data files from data_dir={data_dir}
-    - Save all the predictions given by the model to a file named 'predictions-{task_name}.csv' in the './cache/ehrshot/{model}/' directory.
+    - Save all the predictions given by the model to a file named 'predictions-{task_name}.csv' in the './cache/mimic_extract/{model}/' directory.
     - Don't add, delete, or modify any files in data_dir
     - Use "print" to output information in the feedback
     - No plotting or visualization is allowed
@@ -95,7 +95,7 @@ Each of the label csv files contain the following columns:
 
 class MIMICEXTRACTEHRTask(AbstractEHRTask):
     """
-    Generic task for answering questions based on the EHRShot data.
+    Generic task for answering questions based on the MIMIC_EXTRACT data.
 
     Class sttributed:
     -----------------
