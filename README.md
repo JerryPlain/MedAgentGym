@@ -7,7 +7,7 @@
   <a href="https://www.arxiv.org/abs/2506.04405" target="_blank"><img src="https://img.shields.io/badge/arXiv-2506.02911-FF6B6B?style=for-the-badge&logo=arxiv&logoColor=white" alt="arXiv"></a>
   <a href="https://wshi83.github.io/MedAgentGym-Page"><img src="https://img.shields.io/badge/Doc-Documentation-4285F4?style=for-the-badge&logo=googledocs&logoColor=white" alt="Documentation"></a>
   <a href="https://huggingface.co/MedAgentGym"><img src="https://img.shields.io/badge/HuggingFace-Model&Data-FFBF00?style=for-the-badge&logo=huggingface&logoColor=white" alt="HF Model&Data"></a>
-  <a href="mailto:medagentgym@gmail.com"><img src="https://img.shields.io/badge/Email-Dataset-30B980?style=for-the-badge&logo=minutemailer&logoColor=white" alt="Email Question"></a>
+  <a href="mailto:medagentgym@gmail.com"><img src="https://img.shields.io/badge/Email-Question-30B980?style=for-the-badge&logo=minutemailer&logoColor=white" alt="Email Question"></a>
 </p>
 
 
@@ -20,8 +20,13 @@ This is the official repository for the paper: "MedAgentGym: Training LLM Agents
 
 ### Dataset Access
 
-#### EHR Data Access (<font color=#FF000>Important!!!</font>)
-MedAgentGym has been carefully curated with strict adherence to ethical standards, leveraging datasets that are publicly available or that incorporate rigorous privacy protection and anonymization measures. Table 7 in the Appendix provides detailed access requirements for each of the 12 datasets included in MedAgentGym. Researchers seeking access to preprocessed task and data files should first obtain and attach all required data usage agreements and submit a formal request via email to `medagentgym@gmail.com`, using the subject line “MedAgentGym Preprocessed Data Access".
+#### EHR Data Access (<font color=#FF000>Update on July 18th, 2025</font>)
+MedAgentGym has been carefully curated in strict accordance with ethical standards, utilizing datasets that are either publicly available or that incorporate rigorous privacy protection and anonymization measures. Table 7 in the Appendix details the specific access requirements for each of the 12 datasets included in MedAgentGym. Researchers seeking access to preprocessed tasks and data files must first obtain and submit all necessary data usage agreements. Access Policy: Only credentialed users who have signed the Data Use Agreement (DUA) are permitted to access these files. 
+```License (for files): PhysioNet Credentialed Health Data License 1.5.0
+Data Use Agreement: PhysioNet Credentialed Health Data Use Agreement 1.5.0
+Required Training: CITI Data or Specimens Only Research.
+```
+Please note, this current version excludes the EHRSHOT dataset. Access to data involving [EHRSHOT](https://redivis.com/datasets/53gc-8rhx41kgt) tasks requires additional approval from Stanford University. Once approved, researchers seeking full access to preprocessed data can submit a formal request via email to `medagentgym@gmail.com`, using the subject line “MedAgentGym Preprocessed Data Access".
 
 #### Tasks Definition and Access
 This repository contains basic task files `train_tasks.jsonl` and `test_tasks.jsonl`, each including the task ID, task description, question, and corresponding ground truth answer.
