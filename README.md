@@ -22,7 +22,8 @@ This is the official repository for the paper: "MedAgentGym: Training LLM Agents
 
 #### EHR Data Access (<font color=#FF000>Update on July 18th, 2025</font>)
 MedAgentGym has been carefully curated in strict accordance with ethical standards, utilizing datasets that are either publicly available or that incorporate rigorous privacy protection and anonymization measures. Table 7 in the Appendix details the specific access requirements for each of the 12 datasets included in MedAgentGym. Researchers seeking access to preprocessed tasks and data files must first obtain and submit all necessary data usage agreements. Access Policy: Only credentialed users who have signed the Data Use Agreement (DUA) are permitted to access these files. 
-```License (for files): PhysioNet Credentialed Health Data License 1.5.0
+```
+License (for files): PhysioNet Credentialed Health Data License 1.5.0
 Data Use Agreement: PhysioNet Credentialed Health Data Use Agreement 1.5.0
 Required Training: CITI Data or Specimens Only Research.
 ```
