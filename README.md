@@ -27,7 +27,7 @@ License (for files): PhysioNet Credentialed Health Data License 1.5.0
 Data Use Agreement: PhysioNet Credentialed Health Data Use Agreement 1.5.0
 Required Training: CITI Data or Specimens Only Research.
 ```
-Please note, this current version excludes the MIMIC-related (MIMIC-III, eICU, TREQS) and EHRSHOT dataset. Access to data involving [MIMIC-III](https://physionet.org/content/mimiciii/1.4/), [eICU](https://eicu-crd.mit.edu), and [EHRSHOT](https://redivis.com/datasets/53gc-8rhx41kgt) tasks requires additional approval from PhysioNet and Stanford University. Researchers seeking for any additional guidance on full access to preprocessed data can submit a formal request via email to `medagentgym@gmail.com`, using the subject line “MedAgentGym Preprocessed Data Access".
+Please note, this current version excludes the MIMIC-related (MIMIC-III, eICU, TREQS) and EHRSHOT dataset. Access to data involving [MIMIC-III](https://physionet.org/content/mimiciii/1.4/), [eICU](https://eicu-crd.mit.edu), and [EHRSHOT](https://redivis.com/datasets/53gc-8rhx41kgt) tasks requires additional approval from PhysioNet and Stanford University. Researchers seeking for any additional guidance on full access to preprocessed data can send an email to `medagentgym@gmail.com`, using the subject line “MedAgentGym Preprocessed Data Access".
 
 #### Tasks Definition and Access
 This repository contains basic task files `train_tasks.jsonl` and `test_tasks.jsonl`, each including the task ID, task description, question, and corresponding ground truth answer.
