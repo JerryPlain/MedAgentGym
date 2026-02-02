@@ -72,10 +72,21 @@ class MedCalBenchTask(AbstractEHRTask):
         # locate the task
         if self.task_list is None:
             if self.mode == 'test':
-                task_file = 'test_tasks.jsonl'
+                # Try multiple possible file names
+                possible_files = ['test_tasks.jsonl', 'test.jsonl']
             else:
-                task_file = 'train_tasks_all.jsonl'
-            task_path = os.path.join(self.data_path, task_file)
+                possible_files = ['train_tasks_all.jsonl', 'train.jsonl']
+            
+            task_path = None
+            for task_file in possible_files:
+                candidate_path = os.path.join(self.data_path, task_file)
+                if os.path.exists(candidate_path):
+                    task_path = candidate_path
+                    break
+            
+            if task_path is None:
+                raise FileNotFoundError(f"No task file found in {self.data_path}. Tried: {possible_files}")
+            
             self.task_list = []
             with open(task_path, 'r') as f:
                 for line in f:
@@ -84,6 +95,8 @@ class MedCalBenchTask(AbstractEHRTask):
         self.context = task_data['Patient Note']
         self.question = task_data['Question']
         self.answer = task_data['Ground Truth Answer']
+        self.lower_limit = task_data.get('Lower Limit')
+        self.upper_limit = task_data.get('Upper Limit')
         self.calculator = task_data['Calculator Name']
         calculator_path = os.path.join(self.data_path, "calculation_method.jsonl")
         self.calculator_info = {}
@@ -104,8 +117,14 @@ class MedCalBenchTask(AbstractEHRTask):
         Set up the goal for the task
         """
         super().setup_goal()
-        # get the task configuration
-        self.goal = f"Write a python code to solve the given question. Use the variable 'answer' to store the answer of the code.\nQuestion: {self.question}\n"
+        # get the task configuration - include patient note in the goal
+        self.goal = f"""Write a python code to solve the given question. Use the variable 'answer' to store the answer of the code.
+
+Patient Note:
+{self.context}
+
+Question: {self.question}
+"""
         info = {}
         return self.goal, info
 
@@ -137,13 +156,22 @@ class MedCalBenchTask(AbstractEHRTask):
                 ans = self.answer[0]
             else:
                 ans = self.answer
-            # ans = self.answer
 
             correctness = False
             try:
-                if float(self.answer) >= float(pred) * 0.95 or float(self.answer) <= float(pred) * 1.05:
-                    # plus minus 5% as the original tolerance
-                    correctness = True
+                pred_float = float(pred)
+                
+                # Use lower/upper limits if available, otherwise use ±5% tolerance
+                if self.lower_limit is not None and self.upper_limit is not None:
+                    lower = float(self.lower_limit)
+                    upper = float(self.upper_limit)
+                    if lower <= pred_float <= upper:
+                        correctness = True
+                else:
+                    # Fallback to original logic: ±5% tolerance
+                    ans_float = float(self.answer)
+                    if ans_float >= pred_float * 0.95 or ans_float <= pred_float * 1.05:
+                        correctness = True
             except Exception as e:
                 return (
                     0,
